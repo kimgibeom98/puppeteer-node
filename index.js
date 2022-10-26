@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
+let id = 0;
 
-(async() => {
+(async () => {
   const browser = await puppeteer.launch({
     headless: false
   });
@@ -10,12 +11,13 @@ const puppeteer = require('puppeteer');
     width: 1920,
     height: 1000
   });
-  
+
   await page.goto('https://ownerclan.com/V2/product/specialProducts.php?no=top100');
 
-  const ehList =  await page.$$("#productList-content > li")
-  for(let eh of ehList){
-    const title = await eh.$eval('div.list_st2 > p.new_title02 > a', (el) => {
+  const ehList = await page.$$("#productList-content > li")
+
+  for (let eh of ehList) {
+    const name = await eh.$eval('div.list_st2 > p.new_title02 > a', (el) => {
       return el.innerText
     })
     const selfcode = await eh.$eval('div.list_st2 > p.pro_code', (el) => {
@@ -24,7 +26,11 @@ const puppeteer = require('puppeteer');
     const price = await eh.$eval('div.list_st2 > p.price2', (el) => {
       return el.innerText
     })
-    console.log(title,selfcode, price)
+    id++;
+
+    console.log({
+      id, name, selfcode, price
+    });
   }
 
   browser.close();
