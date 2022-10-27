@@ -17,17 +17,10 @@ let id = 0;
   const ehList = await page.$$("#productList-content > li")
 
   for (const eh of ehList) {
-    const name = await eh.$eval('div.list_st2 > p.new_title02 > a', (el) => {
-      return el.innerText
-    })
-    const selfcode = await eh.$eval('div.list_st2 > p.pro_code', (el) => {
-      return el.innerText
-    })
-    const price = await eh.$eval('div.list_st2 > p.price2', (el) => {
-      return el.innerText
-    })
+    const name = await eh.$eval('div.list_st2 > p.new_title02 > a', (el) => el.innerText);
+    const selfcode = await eh.$eval('div.list_st2 > p.pro_code', (el) => el.innerText);
+    const price = await eh.$eval('div.list_st2 > p.price2', (el) => el.innerText);
     id++;
-
     console.log({
       id, name, selfcode, price
     });
