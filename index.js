@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
-const cheerio = require('cheerio');
-(async() => {
+let id = 0;
+
+(async () => {
   const browser = await puppeteer.launch({
     headless: false
   });
@@ -10,19 +11,27 @@ const cheerio = require('cheerio');
     width: 1920,
     height: 1000
   });
-  
-  await page.goto('https://ownerclan.com/V2/product/specialProducts.php?no=top100');
-  const content = await page.content();
-  const $ = cheerio.load(content);
-  const lists = $("#productList-content > li");
 
-  lists.each((id, list) => {
-    const name = $(list).find("div.list_st2 > p.new_title02 > a").text();
-    const selfcode = $(list).find("div.list_st2 > p.pro_code").text();
-    const price = $(list).find("div.list_st2 > p.price2").text();
+  await page.goto('https://ownerclan.com/V2/product/specialProducts.php?no=top100');
+
+  const ehList = await page.$$("#productList-content > li")
+
+  for (const eh of ehList) {
+    const name = await eh.$eval('div.list_st2 > p.new_title02 > a', (el) => {
+      return el.innerText
+    })
+    const selfcode = await eh.$eval('div.list_st2 > p.pro_code', (el) => {
+      return el.innerText
+    })
+    const price = await eh.$eval('div.list_st2 > p.price2', (el) => {
+      return el.innerText
+    })
+    id++;
+
     console.log({
       id, name, selfcode, price
     });
-  });
+  }
+
   browser.close();
 })();
