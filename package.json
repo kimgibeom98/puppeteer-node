@@ -3,5 +3,23 @@
     "cheerio": "^1.0.0-rc.12",
     "puppeteer": "^19.1.0",
     "puppeteer-core": "^19.1.0"
-  }
+  },
+  "name": "puppeteer-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kimgibeom98/puppeteer-node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kimgibeom98/puppeteer-node/issues"
+  },
+  "homepage": "https://github.com/kimgibeom98/puppeteer-node#readme",
+  "description": ""
 }
