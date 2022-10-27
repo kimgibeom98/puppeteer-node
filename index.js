@@ -16,7 +16,7 @@ let id = 0;
 
   const ehList = await page.$$("#productList-content > li")
 
-  for (let eh of ehList) {
+  for (const eh of ehList) {
     const name = await eh.$eval('div.list_st2 > p.new_title02 > a', (el) => {
       return el.innerText
     })
