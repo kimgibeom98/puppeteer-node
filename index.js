@@ -26,6 +26,6 @@ let data = [];
     data.push({id, name, selfcode, price});
   });
   browser.close();
-  const dataJSON = JSON.stringify(data);
+  const dataJSON = JSON.stringify(data, null, 2);
   fs.writeFileSync('crawling-json.json',dataJSON)
 })();
