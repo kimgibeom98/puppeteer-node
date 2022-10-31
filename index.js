@@ -17,14 +17,15 @@ const puppeteer = require('puppeteer');
 
   for (const eh of ehList) {
     const id = await eh.$eval('div.list_st2 > div.new_img > span.img > div > img', (el) => {
-      return el.src
+      const srcCut = el.src.split('/')
+      return Number(srcCut[8].substring(11, srcCut[8].length - 4));
     });
     const name = await eh.$eval('div.list_st2 > p.new_title02 > a', (el) => el.innerText);
     const selfcode = await eh.$eval('div.list_st2 > p.pro_code', (el) => el.innerText);
     const price = await eh.$eval('div.list_st2 > p.price2', (el) => el.innerText);
 
     console.log({
-      id
+      id, name, selfcode, price
     });
   }
 
