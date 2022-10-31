@@ -20,7 +20,7 @@ const cheerio = require('cheerio');
     const name = $(list).find("div.list_st2 > p.new_title02 > a").text();
     const selfcode = $(list).find("div.list_st2 > p.pro_code").text();
     const price = $(list).find("div.list_st2 > p.price2").text();
-    const id = count + 1
+    const id = count + 1;
     console.log({
       id, name, selfcode, price
     });
