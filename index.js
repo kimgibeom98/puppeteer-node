@@ -23,9 +23,9 @@ let data = [];
     const name = $(list).find("div.list_st2 > p.new_title02 > a").text();
     const selfcode = $(list).find("div.list_st2 > p.pro_code").text();
     const price = $(list).find("div.list_st2 > p.price2").text();
-    data.push({id, name, selfcode, price});
+    data.push({ id, name, selfcode, price });
   });
   browser.close();
   const dataJSON = JSON.stringify(data, null, 2);
-  fs.writeFileSync('crawling-json.json',dataJSON)
+  fs.writeFileSync('crawling-json.json', dataJSON);
 })();
