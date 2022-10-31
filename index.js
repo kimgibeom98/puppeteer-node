@@ -27,5 +27,5 @@ let data = [];
   });
   browser.close();
   const dataJSON = JSON.stringify(data);
-  console.log(dataJSON);
+  fs.writeFileSync('crawling-json.json',dataJSON)
 })();
