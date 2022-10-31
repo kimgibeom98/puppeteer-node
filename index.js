@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer');
-
+const fs = require('fs');
+const data = [];
 (async () => {
   const browser = await puppeteer.launch({
     headless: false
@@ -24,10 +25,9 @@ const puppeteer = require('puppeteer');
     const selfcode = await eh.$eval('div.list_st2 > p.pro_code', (el) => el.innerText);
     const price = await eh.$eval('div.list_st2 > p.price2', (el) => el.innerText);
 
-    console.log({
-      id, name, selfcode, price
-    });
+    data.push({ id, name, selfcode, price });
   }
-
+  const dataJSON = JSON.stringify(data, null, 2);
+  fs.writeFileSync('crawling-json.json',dataJSON)
   browser.close();
 })();
