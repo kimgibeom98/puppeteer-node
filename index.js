@@ -13,11 +13,11 @@ const puppeteer = require('puppeteer');
 
   await page.goto('https://ownerclan.com/V2/product/specialProducts.php?no=top100');
 
-  const ehList = await page.$$("#productList-content > li")
+  const ehList = await page.$$("#productList-content > li");
 
   for (const eh of ehList) {
     const id = await eh.$eval('div.list_st2 > div.new_img > span.img > div > img', (el) => {
-      const srcCut = el.src.split('/')
+      const srcCut = el.src.split('/');
       return Number(srcCut[8].substring(11, srcCut[8].length - 4));
     });
     const name = await eh.$eval('div.list_st2 > p.new_title02 > a', (el) => el.innerText);
