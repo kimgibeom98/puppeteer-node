@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const cheerio = require('cheerio');
 const fs = require('fs');
-let data = [];
+const data = [];
 (async () => {
   const browser = await puppeteer.launch({
     headless: false
