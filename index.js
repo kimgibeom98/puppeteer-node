@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const cheerio = require('cheerio');
 const fs = require('fs');
-const data = [];
+const crawlingData = [];
 (async () => {
   const browser = await puppeteer.launch({
     headless: false
@@ -23,9 +23,9 @@ const data = [];
     const name = $(list).find("div.list_st2 > p.new_title02 > a").text();
     const selfcode = $(list).find("div.list_st2 > p.pro_code").text();
     const price = $(list).find("div.list_st2 > p.price2").text();
-    data.push({ id, name, selfcode, price });
+    crawlingData.push({ id, name, selfcode, price });
   });
   browser.close();
-  const dataJSON = JSON.stringify(data, null, 2);
+  const dataJSON = JSON.stringify(crawlingData, null, 2);
   fs.writeFileSync('crawling-json.json', dataJSON);
 })();
