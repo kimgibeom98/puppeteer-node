@@ -19,7 +19,9 @@ const crawlingData = [];
   const lists = $("#productList-content > li");
 
   lists.each((count, list) => {
-    const id = count + 1;
+    const targetSrc = $(list).find('div.list_st2 > div.new_img > span.img > div > img').attr('src');
+    const srcCut = targetSrc.split('/');
+    const id = Number(srcCut[6].substring(11, srcCut[6].length - 4));
     const name = $(list).find("div.list_st2 > p.new_title02 > a").text();
     const selfcode = $(list).find("div.list_st2 > p.pro_code").text();
     const price = $(list).find("div.list_st2 > p.price2").text();
