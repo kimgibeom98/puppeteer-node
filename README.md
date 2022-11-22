@@ -6,4 +6,4 @@ node.js puppeteer library learn
 
 ## 기술 사항
 puppeteer 라이브러리를 이용하여 특정 사이트의 데이터를 크롤링하여
-json폴더에 담았습니다.
+json파일에 담았습니다.
